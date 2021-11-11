@@ -1,0 +1,7 @@
+Model,Count(n),"Age, mean","Age, SD",# 16-39 yr,% 16-39 yr,# 40-59 yr,% 40-59 yr,# >= 60 yr,% >= 60 yr,# Female.,% Female,# Male,% Male,"SES, mean","SES, SD"
+1 – Previously infected with matching of time of first event,16215,36.1,13.9,9889,61.0,5536,34.1,790,4.9,7428,45.8,8787,54.2,5.5,1.9
+1 - Vaccinated individuals with matching of time of first event,16215,36.1,13.9,9889,61.0,5536,34.1,790,4.9,7428,45.8,8787,54.2,5.5,1.9
+2 – Previously infected without matching of time of first event,46035,36.1,14.7,28157,61.2,14973,32.5,2905,6.3,22661,49.2,23374,50.8,5.3,1.9
+2 - Previously infected and vaccinated individuals without matching of time of first event,46035,36.1,14.7,28157,61.2,14973,32.5,2905,6.3,22661,49.2,23374,50.8,5.3,1.9
+3 - Previously infected,14029,33.2,14.0,9543,68.0,3919,27.9,567,4.0,7467,53.2,6562,46.8,4.7,1.9
+3 - Previously infected and single dose vaccinated,14029,33.2,14.0,9543,68.0,3919,27.9,567,4.0,7467,53.2,6562,46.8,4.7,1.9
