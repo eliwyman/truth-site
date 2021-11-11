@@ -40,12 +40,27 @@ definitions = ['Model',
                'Socioeconomic status on a scale from 1 (lowest) to 10 - SD - Standard Deviation']
 
 layout = html.Div([
-    html.H3('covid_Israel_study'),
+    
+    dcc.Markdown('''
+    
+    # Israel Covid-19 Study
+    
+'''),
+    
     dash_table.DataTable(
         id='tbl',
         columns=[{"name": i, "id": i} for i in sc.columns],
         data=sc.to_dict('records'),
         style_table={'overflowX': 'auto'},
+        
+        # left align text in header row for readability
+        style_header={'textAlign': 'left'},
+        
+        # wrap text in data (non-header) cells
+        style_data={
+            'whiteSpace': 'normal',
+            'height': 'auto',
+        },
     ),
     html.Br(),
     dbc.Alert(id='tbl_out'),
@@ -67,7 +82,13 @@ layout = html.Div([
     dcc.Graph(id="bar-chart2", config=bar_config),
     dcc.Link('Go to App 1', href='/apps/app1'),
     html.Br(),
-    dcc.Link('Go to App 2', href='/apps/app2')
+    dcc.Link('Go to App 2', href='/apps/app2'),
+    
+    dcc.Markdown('''
+    > This data was taken from this published study https://www.medrxiv.org/content/10.1101/2021.08.24.21262415v1.full.pdf on November 8th, 2021  
+    > Referenced in the article published on MedRxiv https://doi.org/10.1101/2021.08.24.21262415
+''')
+    
 ])
 
 @app.callback(
