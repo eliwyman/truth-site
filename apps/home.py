@@ -10,7 +10,7 @@ layout = html.Div([
 
     Please **click** one of the links below to explore our app library.
     '''),
-    dcc.Link('Go to App 1', href='/apps/app1'),
+    dcc.Link('Go to U.S. Crime', href='/apps/us_crime'),
     html.Br(),
     dcc.Link('Go to App 2', href='/apps/app2'),
     html.Br(),
