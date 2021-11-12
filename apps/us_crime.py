@@ -29,12 +29,21 @@ layout = html.Div([
     
 '''),
     dcc.Dropdown(
-        id="dropdown",
+        id="dropdown-fbi",
         options=[{"label" : x, "value" : x} for x in fbi_df.drop(['Year', 'Population'], axis=1).columns],
         value=fbi_df.columns[0],
         clearable=False,
     ),
-    dcc.Graph(id="bar-chart", config=bar_config),
+    dcc.Graph(id="fbi-bar-chart", config=bar_config),
+    
+    dcc.Dropdown(
+        id="dropdown-ojp",
+        options=[{"label" : 'All offenses', "value" : 'All offenses'}],
+        value='All offenses',
+        clearable=False,
+    ),
+    dcc.Graph(id="ojp-bar-chart", config=bar_config),
+    
     dash_table.DataTable(
         id='tbl',
         columns=[{"name": i, "id": i} for i in fbi_state_df.columns],
@@ -61,10 +70,10 @@ layout = html.Div([
 ])
 
 @app.callback(
-    Output("bar-chart", "figure"), 
-    Input("dropdown", "value"))
+    Output("fbi-bar-chart", "figure"), 
+    Input("dropdown-fbi", "value"))
 
-def update_bar_chart(category):
+def update_fbi_bar_chart(category):
     
     fig = px.bar(fbi_df, x='Year', y=category,
                 hover_data=[category]
@@ -74,6 +83,28 @@ def update_bar_chart(category):
         go.Scatter(
             x=fbi_df.Year,
             y=fbi_df[category],
+            name='trendline'
+    ))
+    
+    fig.update_layout(xaxis_tickangle=-45)
+
+    
+    return fig
+
+@app.callback(
+    Output("ojp-bar-chart", "figure"), 
+    Input("dropdown-ojp", "value"))
+
+def update_ojp_bar_chart(category):
+    
+    fig = px.bar(ojjdp_df, x='Year', y=category,
+                hover_data=[category]
+                )
+    
+    fig.add_trace(
+        go.Scatter(
+            x=ojjdp_df.Year,
+            y=ojjdp_df[category],
             name='trendline'
     ))
     
