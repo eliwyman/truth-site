@@ -14,7 +14,12 @@ bar_config={
     'modeBarButtonsToRemove': ['zoom', 'pan', 'select2d', 'lasso2d', 'zoomIn2d', 'zoomOut2d', 'autoScale2d', 'resetScale2d']
 }
 
+import os
+
 from app import app
+from apps import bot_helper
+
+helper = bot_helper.Helper()
 
 # filepath needs to be relative to app.py (engine)
 fbi_state_df = pd.read_csv('data/fbi_state_summary.csv')
@@ -59,8 +64,10 @@ layout = html.Div([
             'height': 'auto',
         },
     ),
-    html.Br(),
-    dcc.Link('Go to Israel Covid-19 Study', href='/apps/covid_israel_study'),
+
+    html.Div([
+        helper.get_nav_div(os.path.splitext(os.path.basename(__file__))[0])
+    ]),  
     
     dcc.Markdown('''
     

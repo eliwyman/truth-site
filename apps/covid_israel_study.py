@@ -6,6 +6,8 @@ import dash_bootstrap_components as dbc
 
 import pandas as pd
 
+import os
+
 import plotly.express as px
 import plotly.graph_objects as go
 
@@ -15,6 +17,9 @@ bar_config={
 }
 
 from app import app
+from apps import bot_helper
+
+helper = bot_helper.Helper()
 
 # filepath needs to be relative to app.py (engine)
 sc = pd.read_csv('data/study_characteristics.csv')
@@ -80,9 +85,10 @@ layout = html.Div([
         clearable=False,
     ),
     dcc.Graph(id="bar-chart2", config=bar_config),
-    dcc.Link('Go to App 1', href='/apps/app1'),
-    html.Br(),
-    dcc.Link('Go to App 2', href='/apps/app2'),
+    
+    html.Div([
+        helper.get_nav_div(os.path.splitext(os.path.basename(__file__))[0])
+    ]),
     
     dcc.Markdown('''
     > This data was taken from this published study https://www.medrxiv.org/content/10.1101/2021.08.24.21262415v1.full.pdf on November 8th, 2021  
@@ -121,4 +127,3 @@ def update_bar_chart2(model):
 
 def update_table(active_cell):
     return definitions[active_cell['column']] if active_cell else "Click the table"
-        
