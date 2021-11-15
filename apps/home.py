@@ -4,10 +4,7 @@ from dash.dependencies import Input, Output
 
 import os
 
-from app import app
-from apps import bot_helper
-
-helper = bot_helper.Helper()
+from app import app, helper
 
 layout = html.Div([
     dcc.Markdown('''

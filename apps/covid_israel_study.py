@@ -16,10 +16,7 @@ bar_config={
     'modeBarButtonsToRemove': ['zoom', 'pan', 'select2d', 'lasso2d', 'zoomIn2d', 'zoomOut2d', 'autoScale2d', 'resetScale2d']
 }
 
-from app import app
-from apps import bot_helper
-
-helper = bot_helper.Helper()
+from app import app, helper
 
 # filepath needs to be relative to app.py (engine)
 sc = pd.read_csv('data/study_characteristics.csv')

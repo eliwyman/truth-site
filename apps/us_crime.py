@@ -16,10 +16,7 @@ bar_config={
 
 import os
 
-from app import app
-from apps import bot_helper
-
-helper = bot_helper.Helper()
+from app import app, helper
 
 # filepath needs to be relative to app.py (engine)
 fbi_state_df = pd.read_csv('data/fbi_state_summary.csv')
