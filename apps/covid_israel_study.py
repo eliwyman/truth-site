@@ -44,9 +44,7 @@ definitions = ['Model',
 layout = html.Div([
     
     dcc.Markdown('''
-    
-    # Israel Covid-19 Study
-    
+    # Israel Covid Study
 '''),
     
     dash_table.DataTable(
@@ -88,6 +86,9 @@ layout = html.Div([
     ]),
     
     dcc.Markdown('''
+    
+    > This app serves to display the data from the study titled 'Comparing SARS-CoV-2 natural immunity to vaccine-induced immunity: reinfections versus breakthrough infections'
+    
     > This data was taken from this published study https://www.medrxiv.org/content/10.1101/2021.08.24.21262415v1.full.pdf on November 8th, 2021  
     > Referenced in the article published on MedRxiv https://doi.org/10.1101/2021.08.24.21262415
 ''')
