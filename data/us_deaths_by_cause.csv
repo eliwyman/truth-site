@@ -1,0 +1,13 @@
+,Rank,Cause of death,Classification code,2018 Number,2018 Percent,2018 Rate,2019 Number,2019 Percent,2019 Rate
+0,-,All causes,,2839205,100.0,723.6,2854838,100.0,715.2
+1,1,Diseases of heart,"I00–I09,I11,I13,I20–I51",655381,23.1,163.6,659041,23.1,161.5
+2,2,Malignant neoplasms,C00–C97,599274,21.1,149.1,599601,21.0,146.2
+3,3,Accidents (unintentional injuries),"V01–X59,Y85–Y86",167127,5.9,48.0,173040,6.1,49.3
+4,4,Chronic lower respiratory diseases,J40–J47,159486,5.6,39.7,156979,5.5,38.2
+5,5,Cerebrovascular diseases,I60–I69,147810,5.2,37.1,150005,5.3,37.0
+6,6,Alzheimer disease,G30,122019,4.3,30.5,121499,4.3,29.8
+7,7,Diabetes mellitus,E10–E14,84946,3.0,21.4,87647,3.1,21.6
+8,8,"Nephritis, nephrotic syndrome and nephrosis","N00–N07,N17–N19,N25–N27",51386,1.8,12.9,51565,1.8,12.7
+9,9,Influenza and pneumonia,J09–J18,59120,2.1,14.9,49783,1.7,12.3
+10,10,Intentional self-harm (suicide),"*U03,X60–X84,Y87.0",48344,1.7,14.2,47511,1.7,13.9
+11,-,All other causes (residual),C00,744312,26.2,-,758167,26.6,-

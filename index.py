@@ -3,7 +3,7 @@ from dash import html
 from dash.dependencies import Input, Output
 
 from app import app
-from apps import home, us_crime, covid_israel_study
+from apps import home, us_crime, covid_israel_study, us_mortality
         
 app.layout = html.Div([
     dcc.Location(id='url', refresh=False),
@@ -18,6 +18,8 @@ def display_page(pathname):
         return us_crime.layout
     elif pathname == '/apps/covid_israel_study':
         return covid_israel_study.layout
+    elif pathname == '/apps/us_mortality':
+        return us_mortality.layout
     elif pathname in ['/', '/home', '/index', '/index.html', '/index.py', '/apps/', '/apps/home']:
         return home.layout
     else:
