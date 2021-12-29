@@ -1,3 +1,4 @@
+import dash
 from dash import dcc
 from dash import html
 from dash.dependencies import Input, Output
@@ -16,14 +17,23 @@ bar_config={
 
 import os
 
-from app import app, helper
+from apps import bot_helper
+
+app = dash.Dash(
+    __name__,
+    requests_pathname_prefix='/us_crime/'
+)
+
+#def display(app):
+
+helper = bot_helper.Helper()
 
 # filepath needs to be relative to app.py (engine)
-fbi_state_df = pd.read_csv('data/fbi_state_summary.csv')
-fbi_df = pd.read_csv('data/FBI_all_offenses.csv')
-ojjdp_df = pd.read_csv('data/OJJDP_all_offenses.csv')
+fbi_state_df = pd.read_csv('/home/edwadmin/site/data/fbi_state_summary.csv')
+fbi_df = pd.read_csv('/home/edwadmin/site/data/FBI_all_offenses.csv')
+ojjdp_df = pd.read_csv('/home/edwadmin/site/data/OJJDP_all_offenses.csv')
 
-layout = html.Div([
+app.layout = html.Div([
     
     dcc.Markdown('''
     # U.S. Federal Crime
@@ -61,7 +71,7 @@ layout = html.Div([
     ),
 
     html.Div([
-        helper.get_nav_div(os.path.splitext(os.path.basename(__file__))[0])
+        helper.get_nav_div_server()
     ]),  
     
     dcc.Markdown('''
@@ -77,6 +87,9 @@ layout = html.Div([
 ''')    
 ])
 
+#init_callbacks(app)
+
+#def init_callbacks(app):
 @app.callback(
     Output("fbi-bar-chart", "figure"), 
     Input("dropdown-fbi", "value"))
@@ -120,3 +133,5 @@ def update_ojp_bar_chart(category):
 
     
     return fig
+
+server = app.server
