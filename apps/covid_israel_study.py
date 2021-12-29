@@ -1,3 +1,4 @@
+import dash
 from dash import dcc
 from dash import html
 from dash.dependencies import Input, Output
@@ -16,12 +17,21 @@ bar_config={
     'modeBarButtonsToRemove': ['zoom', 'pan', 'select2d', 'lasso2d', 'zoomIn2d', 'zoomOut2d', 'autoScale2d', 'resetScale2d']
 }
 
-from app import app, helper
+from apps import bot_helper
+
+app = dash.Dash(
+    __name__,
+    requests_pathname_prefix='/covid_israel_study/'
+)
+
+#def display(app):
+
+helper = bot_helper.Helper()
 
 # filepath needs to be relative to app.py (engine)
-sc = pd.read_csv('data/study_characteristics.csv')
-odds_m1_m2 = pd.read_csv('data/odds_ratios_m1_m2.csv', header = 0, index_col = 0)
-odds_m3 = pd.read_csv('data/odds_ratios_m3.csv', header = 0, index_col = 0)
+sc = pd.read_csv('/home/edwadmin/site/data/study_characteristics.csv')
+odds_m1_m2 = pd.read_csv('/home/edwadmin/site/data/odds_ratios_m1_m2.csv', header = 0, index_col = 0)
+odds_m3 = pd.read_csv('/home/edwadmin/site/data/odds_ratios_m3.csv', header = 0, index_col = 0)
 
 # column definitions for the models
 definitions = ['Model',
@@ -41,7 +51,7 @@ definitions = ['Model',
                'Socioeconomic status on a scale from 1 (lowest) to 10',
                'Socioeconomic status on a scale from 1 (lowest) to 10 - SD - Standard Deviation']
 
-layout = html.Div([
+app.layout = html.Div([
     
     dcc.Markdown('''
     
@@ -84,7 +94,7 @@ layout = html.Div([
     dcc.Graph(id="bar-chart2", config=bar_config),
     
     html.Div([
-        helper.get_nav_div(os.path.splitext(os.path.basename(__file__))[0])
+        helper.get_nav_div_server()
     ]),
     
     dcc.Markdown('''
@@ -94,6 +104,7 @@ layout = html.Div([
     
 ])
 
+#def init_callbacks(app):
 @app.callback(
     Output("bar-chart1", "figure"), 
     Input("dropdown1", "value"))
@@ -124,3 +135,5 @@ def update_bar_chart2(model):
 
 def update_table(active_cell):
     return definitions[active_cell['column']] if active_cell else "Click the table"
+
+server = app.server
