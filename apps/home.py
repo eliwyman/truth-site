@@ -1,19 +1,30 @@
+import dash
 from dash import dcc
 from dash import html
-from dash.dependencies import Input, Output
 
 import os
 
-from app import app, helper
+from apps import bot_helper
 
-layout = html.Div([
+app = dash.Dash(
+    __name__,
+    requests_pathname_prefix='/app/'
+)
+
+#def display(app):
+
+helper = bot_helper.Helper()
+
+app.layout = html.Div([
     dcc.Markdown('''
-    ### Homepage
+    ### Homepage (home.py)
 
     Please **click** one of the links below to explore our app library.
     '''),
-    
+
     html.Div([
-        helper.get_nav_div(os.path.splitext(os.path.basename(__file__))[0])
+        helper.get_nav_div_server()
     ]),  
 ])
+
+server = app.server
