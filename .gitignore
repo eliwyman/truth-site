@@ -1,1 +1,3 @@
 apps/jupyter/.env
+*.pyc
+apps/jupyter/.ipynb_checkpoints/*
