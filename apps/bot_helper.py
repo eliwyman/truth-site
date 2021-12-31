@@ -14,12 +14,12 @@ class Helper:
     # Class variables for instance non-specific environment variables
     load_dotenv()
     APP_ROOT = os.getenv('APP_ROOT')
-        
+
     # constructor of Main class
     def __init__(self):
         print(f"Helper class initialized, app root: ", self.APP_ROOT)
 
-    def find_apps(self, pattern, top = '/home/edwadmin/site/apps/'):
+    def find_apps(self, pattern, top = APP_ROOT + '/apps/'):
         result = []
         for root, dirs, files in os.walk(top):
             for name in files:
