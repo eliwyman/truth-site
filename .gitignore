@@ -2,4 +2,4 @@
 *.pyc
 apps/jupyter/.env
 apps/jupyter/.ipynb_checkpoints/*
-data/artist_scrape_no_lyrics.csv
+data/artist*
