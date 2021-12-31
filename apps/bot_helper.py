@@ -1,5 +1,6 @@
 import os
 import fnmatch
+from dotenv import load_dotenv
 
 import re
 
@@ -10,10 +11,13 @@ class Helper:
     '''
     Burden of Truth custom helper class
     '''
+    # Class variables for instance non-specific environment variables
+    load_dotenv()
+    APP_ROOT = os.getenv('APP_ROOT')
+        
     # constructor of Main class
     def __init__(self):
-        # Initialization of the Strings
-        print("Class 'help_class' v1 has been loaded")
+        print(f"Helper class initialized, app root: ", self.APP_ROOT)
 
     def find_apps(self, pattern, top = '/home/edwadmin/site/apps/'):
         result = []

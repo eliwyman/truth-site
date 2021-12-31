@@ -24,14 +24,11 @@ app = dash.Dash(
     requests_pathname_prefix='/covid_israel_study/'
 )
 
-#def display(app):
-
 helper = bot_helper.Helper()
 
-# filepath needs to be relative to app.py (engine)
-sc = pd.read_csv('/home/edwadmin/site/data/study_characteristics.csv')
-odds_m1_m2 = pd.read_csv('/home/edwadmin/site/data/odds_ratios_m1_m2.csv', header = 0, index_col = 0)
-odds_m3 = pd.read_csv('/home/edwadmin/site/data/odds_ratios_m3.csv', header = 0, index_col = 0)
+sc = pd.read_csv(helper.APP_ROOT + '/data/study_characteristics.csv')
+odds_m1_m2 = pd.read_csv(helper.APP_ROOT + '/data/odds_ratios_m1_m2.csv', header = 0, index_col = 0)
+odds_m3 = pd.read_csv(helper.APP_ROOT + '/data/odds_ratios_m3.csv', header = 0, index_col = 0)
 
 # column definitions for the models
 definitions = ['Model',

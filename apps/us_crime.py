@@ -24,14 +24,11 @@ app = dash.Dash(
     requests_pathname_prefix='/us_crime/'
 )
 
-#def display(app):
-
 helper = bot_helper.Helper()
 
-# filepath needs to be relative to app.py (engine)
-fbi_state_df = pd.read_csv('/home/edwadmin/site/data/fbi_state_summary.csv')
-fbi_df = pd.read_csv('/home/edwadmin/site/data/FBI_all_offenses.csv')
-ojjdp_df = pd.read_csv('/home/edwadmin/site/data/OJJDP_all_offenses.csv')
+fbi_state_df = pd.read_csv(helper.APP_ROOT + '/data/fbi_state_summary.csv')
+fbi_df = pd.read_csv(helper.APP_ROOT + '/data/FBI_all_offenses.csv')
+ojjdp_df = pd.read_csv(helper.APP_ROOT + '/data/OJJDP_all_offenses.csv')
 
 app.layout = html.Div([
     
