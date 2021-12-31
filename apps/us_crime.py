@@ -24,21 +24,16 @@ app = dash.Dash(
     requests_pathname_prefix='/us_crime/'
 )
 
-#def display(app):
-
 helper = bot_helper.Helper()
 
-# filepath needs to be relative to app.py (engine)
-fbi_state_df = pd.read_csv('/home/edwadmin/site/data/fbi_state_summary.csv')
-fbi_df = pd.read_csv('/home/edwadmin/site/data/FBI_all_offenses.csv')
-ojjdp_df = pd.read_csv('/home/edwadmin/site/data/OJJDP_all_offenses.csv')
+fbi_state_df = pd.read_csv(helper.APP_ROOT + '/data/fbi_state_summary.csv')
+fbi_df = pd.read_csv(helper.APP_ROOT + '/data/FBI_all_offenses.csv')
+ojjdp_df = pd.read_csv(helper.APP_ROOT + '/data/OJJDP_all_offenses.csv')
 
 app.layout = html.Div([
     
     dcc.Markdown('''
-    
-    # U.S. Federal Crime Analysis
-    
+    # U.S. Federal Crime
 '''),
     dcc.Dropdown(
         id="dropdown-fbi",
@@ -78,7 +73,13 @@ app.layout = html.Div([
     
     dcc.Markdown('''
     
-    > This data was taken from ... 
+    > This app serves to display U.S. Federal Crime data, collected from both the Federal Bureau of Investigation (FBI), and the  Office of Juvenile Justice and Deliquency Program (OJJDP). 
+    
+    > [OJJDP Arrests by offense, age, and gender](https://www.ojjdp.gov/ojstatbb/crime/ucr.asp)
+    
+    > [FBI Crime in the U.S.](https://ucr.fbi.gov/crime-in-the-u.s/)
+    
+    > Including the results of k-means clustering machine learning algorithm, designed to establish a State ranking for crime levels, by analyzing U.S. County crime reports. 
     
 ''')    
 ])

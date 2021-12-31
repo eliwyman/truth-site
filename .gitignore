@@ -1,2 +1,5 @@
-apps/jupyter/.env
+.env
 *.pyc
+apps/jupyter/.env
+apps/jupyter/.ipynb_checkpoints/*
+data/artist*

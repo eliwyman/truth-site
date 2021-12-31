@@ -24,14 +24,11 @@ app = dash.Dash(
     requests_pathname_prefix='/covid_israel_study/'
 )
 
-#def display(app):
-
 helper = bot_helper.Helper()
 
-# filepath needs to be relative to app.py (engine)
-sc = pd.read_csv('/home/edwadmin/site/data/study_characteristics.csv')
-odds_m1_m2 = pd.read_csv('/home/edwadmin/site/data/odds_ratios_m1_m2.csv', header = 0, index_col = 0)
-odds_m3 = pd.read_csv('/home/edwadmin/site/data/odds_ratios_m3.csv', header = 0, index_col = 0)
+sc = pd.read_csv(helper.APP_ROOT + '/data/study_characteristics.csv')
+odds_m1_m2 = pd.read_csv(helper.APP_ROOT + '/data/odds_ratios_m1_m2.csv', header = 0, index_col = 0)
+odds_m3 = pd.read_csv(helper.APP_ROOT + '/data/odds_ratios_m3.csv', header = 0, index_col = 0)
 
 # column definitions for the models
 definitions = ['Model',
@@ -54,9 +51,7 @@ definitions = ['Model',
 app.layout = html.Div([
     
     dcc.Markdown('''
-    
-    # Israel Covid-19 Study
-    
+    # Israel Covid Study
 '''),
     
     dash_table.DataTable(
@@ -98,6 +93,9 @@ app.layout = html.Div([
     ]),
     
     dcc.Markdown('''
+    
+    > This app serves to display the data from the study titled 'Comparing SARS-CoV-2 natural immunity to vaccine-induced immunity: reinfections versus breakthrough infections'
+    
     > This data was taken from this published study https://www.medrxiv.org/content/10.1101/2021.08.24.21262415v1.full.pdf on November 8th, 2021  
     > Referenced in the article published on MedRxiv https://doi.org/10.1101/2021.08.24.21262415
 ''')
