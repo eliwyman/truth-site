@@ -56,9 +56,19 @@ class Helper:
         
         nav_links.append(dcc.Link('Go to Covid Israel Study', href='/covid_israel_study/', target="_blank"))
         nav_links.append(html.Br())
-        nav_links.append(dcc.Link('Go to US Crime', href='/us_crime/', target="_blank"))
+        nav_links.append(dcc.Link('Go to US Crime Analysis', href='/us_crime/', target="_blank"))
         nav_links.append(html.Br())
-        nav_links.append(dcc.Link('Go to home', href='/app/', target="_blank"))
+        nav_links.append(dcc.Link('Go to US Mortality Dashboard', href='/us_mortality/', target="_blank"))
+        nav_links.append(html.Br())
+        
+        nav_links.append(html.Br())
+        
+        nav_links.append(dcc.Link('Go to Index', href='/app/', target="_blank"))
+        nav_links.append(html.Br())
+        
+        nav_links.append(html.Br())
+        
+        nav_links.append(dcc.Link('Go to Portfolio', href='/', target="_blank"))
         nav_links.append(html.Br())
                 
         nav_div = html.Div(

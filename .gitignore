@@ -1,5 +1,6 @@
 .env
 *.pyc
+apps/__pycache__/
 apps/jupyter/.env
 apps/jupyter/.ipynb_checkpoints/*
 data/artist*

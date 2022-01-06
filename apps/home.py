@@ -17,7 +17,7 @@ helper = bot_helper.Helper()
 
 app.layout = html.Div([
     dcc.Markdown('''
-    ### Homepage (home.py)
+    ### Application Index Page
 
     Please **click** one of the links below to explore our app library.
     '''),
