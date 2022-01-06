@@ -14,6 +14,7 @@ class Helper:
     # Class variables for instance non-specific environment variables
     load_dotenv()
     APP_ROOT = os.getenv('APP_ROOT')
+    IMAGE_DIR = '/static/images/apps/'
 
     # constructor of Main class
     def __init__(self):
@@ -53,6 +54,8 @@ class Helper:
         This function returns a Dash html div object for site navigation. 
         '''
         nav_links = []
+            
+        nav_links.append(dcc.Markdown('Please **click** one of the links below to explore our app library.'))
         
         nav_links.append(dcc.Link('Go to Covid Israel Study', href='/covid_israel_study/', target="_blank"))
         nav_links.append(html.Br())
