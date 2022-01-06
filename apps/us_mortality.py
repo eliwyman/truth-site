@@ -1,3 +1,4 @@
+import dash
 from dash import dcc
 from dash import html
 from dash.dependencies import Input, Output
@@ -16,10 +17,18 @@ bar_config={
     'modeBarButtonsToRemove': ['zoom', 'pan', 'select2d', 'lasso2d', 'zoomIn2d', 'zoomOut2d', 'autoScale2d', 'resetScale2d']
 }
 
-from app import app, helper
+import os
 
-# filepath needs to be relative to app.py (engine)
-usd = pd.read_csv('data/us_deaths_by_cause.csv', index_col = 0)
+from apps import bot_helper
+
+app = dash.Dash(
+    __name__,
+    requests_pathname_prefix='/us_mortality/'
+)
+
+helper = bot_helper.Helper()
+
+usd = pd.read_csv(helper.APP_ROOT + '/data/us_deaths_by_cause.csv', index_col = 0)
 
 # column definitions for the models
 definitions = ['Rank',
@@ -32,7 +41,7 @@ definitions = ['Rank',
     '2019 Percent',
     '2019 Rate']
 
-layout = html.Div([
+app.layout = html.Div([
     
     dcc.Markdown('''
     # US Deaths by Cause
@@ -89,3 +98,5 @@ def update_bar_chart(model):
 
 def update_table(active_cell):
     return definitions[active_cell['column']] if active_cell else "Click the table"
+
+server = app.server

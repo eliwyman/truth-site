@@ -102,7 +102,6 @@ app.layout = html.Div([
     
 ])
 
-#def init_callbacks(app):
 @app.callback(
     Output("bar-chart1", "figure"), 
     Input("dropdown1", "value"))

@@ -84,9 +84,6 @@ app.layout = html.Div([
 ''')    
 ])
 
-#init_callbacks(app)
-
-#def init_callbacks(app):
 @app.callback(
     Output("fbi-bar-chart", "figure"), 
     Input("dropdown-fbi", "value"))
