@@ -67,7 +67,7 @@ app.layout = html.Div([
     html.Br(),
 
     html.Div([
-        helper.get_nav_div(os.path.splitext(os.path.basename(__file__))[0])
+        helper.get_nav_div_server()
     ]),
     
     dcc.Markdown('''
