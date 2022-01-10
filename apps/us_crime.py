@@ -34,7 +34,11 @@ app.layout = html.Div([
     
     dcc.Markdown('''
     # U.S. Federal Crime
+    
+    The below chart is a visual representation of a k-means clustering machine learning model, 
+    used to determine a State's ranking from 0 (least crime per County) to 6 (most crime per County).
 '''),
+    html.Img(id='image', src=helper.IMAGE_DIR + 'state_clusters.png', style={'width': '100%'}),
     dcc.Dropdown(
         id="dropdown-fbi",
         options=[{"label" : x, "value" : x} for x in fbi_df.drop(['Year', 'Population'], axis=1).columns],
@@ -65,11 +69,8 @@ app.layout = html.Div([
             'whiteSpace': 'normal',
             'height': 'auto',
         },
-    ),
-
-    html.Div([
-        helper.get_nav_div_server()
-    ]),  
+        page_size=10
+    ), 
     
     dcc.Markdown('''
     
@@ -81,7 +82,11 @@ app.layout = html.Div([
     
     > Including the results of k-means clustering machine learning algorithm, designed to establish a State ranking for crime levels, by analyzing U.S. County crime reports. 
     
-''')    
+'''),
+
+    html.Div([
+        helper.get_nav_div_server()
+    ])  
 ])
 
 @app.callback(

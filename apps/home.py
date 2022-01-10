@@ -16,11 +16,7 @@ app = dash.Dash(
 helper = bot_helper.Helper()
 
 app.layout = html.Div([
-    dcc.Markdown('''
-    ### Application Index Page
-
-    Please **click** one of the links below to explore our app library.
-    '''),
+    dcc.Markdown('### Application Index Page'),
 
     html.Div([
         helper.get_nav_div_server()

@@ -65,10 +65,6 @@ app.layout = html.Div([
     html.Br(),
     dbc.Alert(id='usd_tbl_out'),
     html.Br(),
-
-    html.Div([
-        helper.get_nav_div_server()
-    ]),
     
     dcc.Markdown('''
     
@@ -79,7 +75,11 @@ app.layout = html.Div([
          
     > Publically accessible via the CDC website at 
         https://www.cdc.gov/nchs/products/databriefs/db395.htm
-''')
+'''),
+
+    html.Div([
+        helper.get_nav_div_server()
+    ]) 
     
 ])
 
