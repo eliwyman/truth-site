@@ -69,6 +69,7 @@ app.layout = html.Div([
             'whiteSpace': 'normal',
             'height': 'auto',
         },
+        page_size=10
     ), 
     
     dcc.Markdown('''

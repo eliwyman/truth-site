@@ -63,6 +63,8 @@ class Helper:
         nav_links.append(html.Br())
         nav_links.append(dcc.Link('Go to US Mortality Dashboard', href='/us_mortality/', target="_blank"))
         nav_links.append(html.Br())
+        nav_links.append(dcc.Link('Go to MMA Regression Model', href='/mma_model/', target="_blank"))
+        nav_links.append(html.Br())
         
         nav_links.append(html.Br())
         
